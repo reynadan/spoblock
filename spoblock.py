@@ -15,15 +15,15 @@ adsnames = ['Advertisement','Spotify']
 m = alsaaudio.Mixer()
 
 def search(m):
-	pubdetected = False
+	addetected = False
 	scr = Wnck.Screen.get_default()
 	scr.force_update()
 	windows = scr.get_windows()
 	for window in windows:
 		if window.get_icon_name() in adsnames:
 			print(window.get_icon_name() + " => Ad detected, muted")
-			pubdetected = True
-	if pubdetected:
+			addetected = True
+	if addetected:
 		m.setvolume(0)
 	else:
 		m.setvolume(80)
