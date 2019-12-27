@@ -9,6 +9,7 @@ import psutil
 import logging
 import subprocess
 from pynput.keyboard import Key, Controller, KeyCode
+from termcolor import colored
 
 gi.require_version("Wnck", "3.0")
 from gi.repository import Wnck
@@ -20,13 +21,19 @@ def search():
 	scr = Wnck.Screen.get_default()
 	scr.force_update()
 	windows = scr.get_windows()
+
 	for window in windows:
 		if window.get_icon_name() in adsnames:
-			print(window.get_icon_name() + " ad detected, rebooting spotify")
+
+			"""if ads is recognised, reboot spotify """
+			print(window.get_icon_name() + " ad detected -> close spotify ", end='')
 			p = psutil.Process(window.get_pid())
 			p.kill()
-			subprocess.Popen(["nohup", "spotify", "&>", "/dev/null", "2>&1&"], shell=False, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL)
-			time.sleep(4)
+			print(colored('OK', 'green'))
+
+			run_spotify()
+			time.sleep(5)
+
 			"""Press play/pause button to launch music """
 			print("play music")
 			keyboard.press(KeyCode.from_vk(269025044))
@@ -40,6 +47,11 @@ def restart_program():
 		os.close(handler.fd)
 	python = sys.executable
 	os.execl(python, python, *sys.argv)
+
+def run_spotify():
+	print("Run spotify ", end='')
+	subprocess.Popen(["nohup", "spotify", "&>", "/dev/null", "2>&1&"], shell=False, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL)
+	print(colored('OK', 'green'))
 
 search()
 restart_program()
