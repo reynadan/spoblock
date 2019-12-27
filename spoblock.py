@@ -17,7 +17,6 @@ keyboard = Controller()
 adsnames = ['Advertisement','Spotify']
 
 def search():
-	pubdetected = False
 	scr = Wnck.Screen.get_default()
 	scr.force_update()
 	windows = scr.get_windows()
@@ -26,7 +25,7 @@ def search():
 			print(window.get_icon_name() + " ad detected, rebooting spotify")
 			p = psutil.Process(window.get_pid())
 			p.kill()
-			subprocess.Popen(["nohup", "spotify", ">", "/dev/null", "2>&1&"])
+			subprocess.Popen(["nohup", "spotify", "&>", "/dev/null", "2>&1&"], shell=False, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL)
 			time.sleep(4)
 			"""Press play/pause button to launch music """
 			print("play music")
