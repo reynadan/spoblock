@@ -35,10 +35,10 @@ def search():
             run_spotify()
             time.sleep(5)
 
-            """Press play/pause button to launch music """
+            """Press Next button in media commands to launch next music """
             print("play music")
-            keyboard.press(KeyCode.from_vk(269025044))
-            keyboard.release(KeyCode.from_vk(269025044))
+            keyboard.press(KeyCode.from_vk(269025047))
+            keyboard.release(KeyCode.from_vk(269025047))
     time.sleep(1)
 
 
