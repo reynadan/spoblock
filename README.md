@@ -4,6 +4,8 @@ It's getting the current windows title and if it's not corresponding to music, s
 
 ## Requirements
 
+Linux, created on Debian 9
+
 ### Alsaaudio
 For python3 you have to get alsaaudio manually for now.
 You can install it by following the steps given below.
