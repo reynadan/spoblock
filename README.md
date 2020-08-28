@@ -5,20 +5,13 @@ Tips : create an alias like this one so you just have to use the command spotify
 
 ## Requirements
 
-Linux, created on Debian 9
+Linux, created on Debian 9, works on Debian 9
 
-### Alsaaudio
-For python3 you have to get alsaaudio manually for now.
-You can install it by following the steps given below.
+apt install :
+- libasound2-dev
 
-Make sure that gcc, python3-dev, libasound2-dev packages are installed in your machine (install them using synaptic if you are using Ubuntu).
-
-Download and extract the following package http://sourceforge.net/projects/pyalsaaudio/files/pyalsaaudio-0.7.tar.gz/download
-
-Go to the extracted folder and execute the following commands (Execute the commands as root or use sudo)
-
-python3 setup.py build 
-python3 setup.py install
-
-sudo apt-get install gcc python3-dev
-sudo pip3 install psutil
+pip3 install :
+- psutil
+- termcolor
+- pynput
+- pyalsaaudio
